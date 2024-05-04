@@ -1,5 +1,5 @@
 - name: db server
-  hosts: [db]
+  hosts: db
   become: yes
   vars:
    login_host: db.devopsm26.online
@@ -25,6 +25,7 @@
          - PyMySQL
          - cryptography
          executable: pip3.9 # pip3.11 if python version is 3.11
+
      - name: check db passord
        community.mysql.mysql_info:
           login_user: root
@@ -37,6 +38,7 @@
      - name: output
        ansible.builtin.debug:
         msg: "output: {{ mysql_connection_output }}"
+        
      - name: setup root password
        ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
        when: mysql_connection_output.failed is true # don't give {{ }} in when condition
