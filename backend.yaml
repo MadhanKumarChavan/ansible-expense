@@ -83,11 +83,11 @@
     login_host: db.devopsm26.online
     login_password: ExpenseApp@1
   tasks:
-    - name: disable debault nodjs
-      ansible.builtin.command: dnf module disable nodejs 
+    - name: disable default nodjs
+      ansible.builtin.command: dnf module disable nodejs -y
 
     - name: enable  nodjs-20
-      ansible.builtin.command: dnf module enable nodejs:20 
+      ansible.builtin.command: dnf module enable nodejs:20 -y
 
 
     - name: Install the latest version
