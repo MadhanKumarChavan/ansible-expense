@@ -90,11 +90,11 @@
       ansible.builtin.command: dnf module enable nodejs:20 
 
 
-    - name: Install the latest version of Apache
+    - name: Install the latest version
       ansible.builtin.dnf: 
         name: " {{ item }}"
-        state: latest
-      -loop:
+        state: installed
+      loop:
           - nodejs
           - mysql
 
