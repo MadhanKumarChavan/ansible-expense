@@ -119,14 +119,10 @@
         dest: /app
         remote_src: yes
 
-    - name: Install  node.js package.
-      community.general.npm:
-        name: npm install
-        path: /app
-#   - name: install npm dependencies
-#     ansible.builtin.command: npm install
-#     args:
-#       chdir: /app
+    - name: install npm dependencies
+      ansible.builtin.command: npm install
+      args:
+        chdir: /app
                 
     - name: Copy file servicefile
       ansible.builtin.copy:
